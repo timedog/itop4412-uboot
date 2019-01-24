@@ -1,0 +1,15 @@
+if TARGET_ITOP4412
+
+config SYS_BOARD
+	default "itop4412"
+
+config SYS_VENDOR
+	default "samsung"
+
+config SYS_CONFIG_NAME
+	default "itop4412"
+    help
+      This option contains information about board configuration name.
+      Based on this option include/configs/<CONFIG_SYS_CONFIG_NAME>.h header
+      will be used for board configuration.
+endif
