@@ -11,7 +11,7 @@
 #include <configs/exynos4-common.h>
 
 /* High Level Configuration Options */
-#define CONFIG_EXYNOS4210		1	/* which is a EXYNOS4210 SoC */
+#define CONFIG_EXYNOS4412		1	/* which is a EXYNOS4412 SoC */
 #define CONFIG_ITOP4412			1	/* working with ITOP4412*/
 
 #define CONFIG_SYS_DCACHE_OFF		1

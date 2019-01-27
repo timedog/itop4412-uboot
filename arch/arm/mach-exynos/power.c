@@ -162,6 +162,20 @@ static void exynos5_set_ps_hold_ctrl(void)
 			EXYNOS_PS_HOLD_CONTROL_DATA_HIGH);
 }
 
+static void exynos4412_set_ps_hold_ctrl(void)
+{
+	struct exynos4412_power *power =
+		(struct exynos4412_power *)samsung_get_base_power();
+
+	/* Set PS-Hold high */
+	setbits_le32(&power->res1[0x330c],	// PS_HOLD_CONTROL
+			EXYNOS_PS_HOLD_CONTROL_DATA_HIGH);
+	// GPX0PUD
+	writel(0, (unsigned int *)0x11000c08);
+	// MASK_WDT_RESET_REQUEST
+	writel(0, &power->res1[0x040c]);
+}
+
 /*
  * Set ps_hold data driving value high
  * This enables the machine to stay powered on
@@ -172,6 +186,9 @@ void set_ps_hold_ctrl(void)
 {
 	if (cpu_is_exynos5())
 		exynos5_set_ps_hold_ctrl();
+	else if (cpu_is_exynos4()) {
+		exynos4412_set_ps_hold_ctrl();
+	}
 }
 
 
