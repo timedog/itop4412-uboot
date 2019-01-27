@@ -174,10 +174,12 @@ void system_clock_init(void)
 	while (readl(&clk->mux_stat_top1) != 0x01122110)
 		continue;
 
-	// uart clk
+	// uart clk(src:MCLK_800MHz)
 	writel(UART4_SEL(6)|UART3_SEL(6)|UART2_SEL(6)|UART1_SEL(6)|UART0_SEL(6),
 			&clk->src_peril0);
-	writel(UART4_RATIO(7)|UART3_RATIO(7)|UART2_RATIO(7)|UART1_RATIO(7)|UART0_RATIO(7),
+	writel(UART4_RATIO(7)|UART3_RATIO(7)|
+			UART2_RATIO(800 * 1000 * 1000 / CONFIG_DEBUG_UART_CLOCK - 1)|
+			UART1_RATIO(7)|UART0_RATIO(7),
 			&clk->div_peril0);
 
 	addr = (unsigned int *)CHIP_BASE;
