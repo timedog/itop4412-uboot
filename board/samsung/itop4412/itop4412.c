@@ -14,6 +14,8 @@
 #include <usb.h>
 
 /*
+    copy from odroid.c
+
     @file arch/arm/mach-exynos/clock.c
     exynos4_set_mmc_clk() config sclk_mmc2 by MODIFY MMC2_PRE_RATIO,
     and need set DOUTMMC2 = 100MHz,so set MMC2_RATIO = 7 here

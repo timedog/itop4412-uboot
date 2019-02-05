@@ -135,13 +135,15 @@
 	};
 
 	dwmmc@12550000 {
-		samsung,bus-width = <4>;
+		samsung,bus-width = <8>;
 		samsung,timing = <2 1 0>;
 		samsung,removable = <0>;
 		fifoth_val = <0x203f0040>;
 		bus_hz = <400000000>;
 		div = <0x3>;
 		index = <4>;
+		fifo-depth = <0x80>;
+		status = "okay";
 	};
 
 	ehci@12580000 {
@@ -149,6 +151,7 @@
 		reg = <0x12580000 0x100>;
 		#address-cells = <1>;
 		#size-cells = <1>;
+		status = "okay";
 		phy {
 			compatible = "samsung,exynos-usb-phy";
 			reg = <0x125B0000 0x100>;
