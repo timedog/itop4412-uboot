@@ -54,6 +54,10 @@
 	"rdaddr=0x48000000\0" \
 	"kerneladdr=0x40007000\0" \
 	"ramdiskaddr=0x48000000\0" \
+	"initrdaddr=-\0" \
+	"dtb=exynos4412-itop-elite.dtb\0" \
+	"dtbaddr=-\0" \
+	"kernel=zImage\0" \
 	"console=ttySAC2,115200n8\0" \
 	"mmcdev=0\0" \
 	"bootenv=uEnv.txt\0" \
@@ -78,7 +82,8 @@
 			"run bootscript; " \
 		"fi; " \
 	"fi;" \
-	"load mmc ${mmcdev} ${loadaddr} uImage; bootm ${loadaddr} "
+	"load mmc ${mmcdev} ${dtbaddr} ${dtb};" \
+	"load mmc ${mmcdev} ${loadaddr} ${kernel}; bootz ${loadaddr} ${initrdaddr} ${dtbaddr}"
 
 #define CONFIG_CLK_1000_400_200
 

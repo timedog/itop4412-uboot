@@ -46,7 +46,8 @@ When adding a new board, the following steps are generally needed:
       -- Copy dwmmc@12550000 segment from exynos4412-odroid.dts
       -- Note:since mmc driver,we need config DOUTmmc as 100MHz,and config sclk_mmc as 50MHz
 
- [10] Now you can read/write SDRAM/MMC,so you can boot kernel by CONFIG_BOOTCAMMAD
+ [10] Now you can read/write SDRAM/MMC,so you can boot kernel by CONFIG_BOOTCAMMAD(defined in 
+      include/configs/itop4412.h)
 
 
  How to build and download(to TF-card)
